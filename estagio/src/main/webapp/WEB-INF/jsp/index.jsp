@@ -43,11 +43,12 @@ body {
 			</div>
 		</div>
 	</div>
-	<div class="section">
-		<div class="container">
+	<div class="section" style="display: flex; flex-direction: row; justify-content: center; align-items: center">
+		<div class="container" style="max-width: 300px;">
 			<div class="row">
 				<div class="col-md-12">
-					<form role="form">
+					<form role="form" action="login" method="post">
+						
 						<div class="form-group">
 							<label class="control-label" for="exampleInputEmail1">Login</label>
 							<input class="form-control" id="exampleInputEmail1"
@@ -60,12 +61,19 @@ body {
 								placeholder="Digite sua senha" type="password" name="password"
 								required="required">
 						</div>
-						<button type="submit" class="btn btn-default" href="login">Entrar</button>
+						<button type="submit" class="btn btn-default">Entrar</button>
+
+						<p>
+						<div ${hidden_attribute} class="row">
+							<div class="col-md-12">
+								<div class="alert alert-warning">
+									<strong>${message1} </strong>${message2}
+								</div>
+							</div>
+						</div>
 					</form>
 				</div>
 			</div>
-		</div>
-	</div>
 </body>
 
 </html>

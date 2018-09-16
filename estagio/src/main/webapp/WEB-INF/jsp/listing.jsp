@@ -1,7 +1,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!DOCTYPE head PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<meta charset="utf-8" />
 <title>Movies Application</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -32,7 +36,7 @@
 			<div class="collapse navbar-collapse" id="navbar-ex-collapse">
 				<ul class="nav navbar-nav navbar-right">
 					<li class="active"><a href="insert">Inserir</a></li>
-					<li class="disabled"><a href="#">Sair </a></li>
+					<li class="disabled"><a href="/">Sair </a></li>
 				</ul>
 			</div>
 		</div>
@@ -44,31 +48,40 @@
 					<table class="table">
 						<thead>
 							<tr>
-								<th>Foto</th>
-								<th>Dados do Filme</th>
+								<th></th>
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="list" items="${lists}">
-										<tr>
-											<td rowspan="3" width="250px"><img
-												src="data:image/jpg;base64, ${list.imgTO64} " height="200px"
-												width="170px" /><br></td>
-											<td>${list.movieId}</td>
-										</tr>
-										<tr>
-											<td>${list.title}</td>
-										</tr>
-										<tr>
-											<td>
-												<div class="form-group">
-													<label for="comment"></label>
-													<textarea class="form-control" rows="5" id="comment">${list.description}</textarea>
-												</div>
-												<a href="/update/${list.movieId}" type="button" class="btn btn-primary" role="button">Alterar</a>
-												<a href="/delete/${list.movieId}" type="button" class="btn btn-danger" role="button">Excluir</a>
-											</td>
-										</tr>
+
+							<c:forEach var="list" items="${lists}" varStatus="loop">
+								<c:choose>
+									<c:when test="${loop.index % 2 == '0'}">
+										<c:set var = "bgcolor" value = "#F2F4F4"/>
+									</c:when>
+									<c:otherwise>
+										<c:set var = "bgcolor" value = ""/>	
+									</c:otherwise>
+								</c:choose>
+									<tr style="background-color: ${bgcolor}">
+										<td rowspan="2" width="170px"><img
+											src="data:image/jpg;base64, ${list.imgTO64} " height="150px"
+											width="130px" /><br></td>
+										<td>${list.movieId}</td>
+									</tr>
+									<tr style="background-color: ${bgcolor}">
+										<td>${fn:substring(list.title, 0, 15)}</td>
+									</tr>
+									<tr style="background-color: ${bgcolor}">
+										<td colspan="2">
+											<div class="form-group">
+												<label for="comment"></label>
+												<textarea class="form-control" rows="5" id="comment">${list.description}</textarea>
+											</div> <a href="/update/${list.movieId}" type="button"
+											class="btn btn-primary" role="button">Alterar</a> <a
+											href="/delete/${list.movieId}" type="button"
+											class="btn btn-danger" role="button">Excluir</a>
+										</td>
+									</tr>
 							</c:forEach>
 						</tbody>
 					</table>

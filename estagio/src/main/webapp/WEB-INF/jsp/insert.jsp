@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
 
 <head>
@@ -39,18 +40,20 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<form role="form" method="post" action="/save" name="formInsert">
+					<form role="form" method="post"  name="formInsert" action="/save"
+						modelAttribute="Movie" enctype="multipart/form-data"> 
 						<div class="form-group">
-							<input type="hidden" name="id" value="" /> <label
-								class="control-label" for="exampleInputEmail1">Título</label> 
-								<input
-								class="form-control" name="title" required="required" id="inputTitulo"
-								placeholder="Insira o título do filme" type="text"
-								value="${objectToEdit.title}">
+							<input class="form-control" name="id" required="required"
+								id="inputId" type="hidden" placeholder="" type="text"
+								value="${objectToEdit.movieId}"> <label
+								class="control-label" for="exampleInputEmail1">TÃ­tulo</label> <input
+								class="form-control" name="title" required="required"
+								id="inputTitulo" placeholder="Insira o tÃ­tulo do filme"
+								type="text" value="${objectToEdit.title}">
 							<div class="form-group">
-								<label for="comment">Descrição:</label>
+								<label for="comment">DescriÃ§Ã£o:</label>
 								<textarea class="form-control" rows="5" id="descricao"
-									placeholder="Insira a descrição do filme" name="description">${objectToEdit.description}</textarea>
+									placeholder="Insira a descriÃ§Ã£o do filme" name="description">${objectToEdit.description}</textarea>
 							</div>
 						</div>
 						<input type="file" class="form-control-file border" name="image">
