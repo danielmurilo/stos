@@ -12,9 +12,19 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "APP_USERS")
 public class AppUser implements Serializable {
-	/**
-	 * 
-	 */
+	
+	public AppUser(long id, String username, String name, String password, String role, String enabled) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.name = name;
+		this.password = password;
+		this.role = role;
+		this.enabled = enabled;
+	}
+	
+	
+	
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,6 +38,8 @@ public class AppUser implements Serializable {
 	private String password;
 	@Column(name = "ROLE", nullable = false)
 	private String role;
+	@Column(name = "ENABLED", nullable = false)
+	private String enabled;
 	
 	
 	public long getId() {
@@ -53,25 +65,31 @@ public class AppUser implements Serializable {
 	}
 	public void setPassword(String password) {
 		this.password = password;
-	}
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
+	}	
 	public String getRole() {
 		return role;
 	}
 	public void setRole(String role) {
 		this.role = role;
 	}
-	
-	public AppUser(long id, String username, String name, String password, String role) {
-		super();
-		this.id = id;
-		this.username = username;
-		this.name = name;
-		this.password = password;
-		this.role = role;
+	public String getUsername() {
+		return username;
 	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getEnabled() {
+		return enabled;
+	}
+	public void setEnabled(String enabled) {
+		this.enabled = enabled;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	
+	
+	
 
 	
 	
