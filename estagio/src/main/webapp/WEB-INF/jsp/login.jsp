@@ -1,3 +1,4 @@
+
 <html>
 
 <head>
@@ -15,8 +16,7 @@
 	rel="stylesheet" type="text/css">
 <style>
 body {
-	background-image:
-		url('https://images.wallpaperscraft.com/image/darth_vader_armor_star_wars_film_hat_snow_93645_1920x1080.jpg');
+	background-image: url('');
 	background-repeat: no-repeat;
 	background-size: auto;
 }
@@ -33,7 +33,7 @@ body {
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#"><span>Movies</span></a>
+				<a class="navbar-brand" href="/"><span>Administradores</span></a>
 			</div>
 			<div class="collapse navbar-collapse" id="navbar-ex-collapse">
 				<ul class="nav navbar-nav navbar-right">
@@ -43,17 +43,23 @@ body {
 			</div>
 		</div>
 	</div>
-	<div class="section" style="display: flex; flex-direction: row; justify-content: center; align-items: center">
+	<div class="section"
+		style="display: flex; flex-direction: row; justify-content: center; align-items: center">
 		<div class="container" style="max-width: 300px;">
 			<div class="row">
 				<div class="col-md-12">
 					<form role="form" action="login" method="post">
-						
+
 						<div class="form-group">
-							<label class="control-label" for="exampleInputEmail1">Login</label>
-							<input class="form-control" id="exampleInputEmail1"
+
+							<input type="hidden" name="${_csrf.parameterName}"
+								value="${_csrf.token}" /> <input type="hidden"
+								class="form-control" type="text" name="movieId"
+								value="${movieId}"> <label class="control-label"
+								for="exampleInputEmail1">Login</label> <input
+								class="form-control" id="exampleInputEmail1"
 								placeholder="Entre com seu login" type="text"
-								required="required" name="login">
+								required="required" name="username">
 						</div>
 						<div class="form-group">
 							<label class="control-label" for="exampleInputPassword1">Senha</label>

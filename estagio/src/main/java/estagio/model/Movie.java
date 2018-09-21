@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -28,7 +29,10 @@ public class Movie implements Serializable {
     @Column(name = "MOVIE_IMAGE", nullable = true, columnDefinition = "mediumblob")
     private byte[] image;
     
+    @Transient
     private String imgTO64;
+    
+    private String link;
     
     //GETTERS AND SETTERS...
     public long getMovieId() {
@@ -71,12 +75,23 @@ public class Movie implements Serializable {
         return imgTO64;
     } 
     
-    public Movie() {
-    }
-    
-    
+	public String getLink() {
+		return link;
+	}
 
-    
+	public void setLink(String link) {
+		this.link = link;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+
+
+
+
+
 	/**
 	 * 
 	 */

@@ -26,13 +26,10 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#"><span>Movies</span></a>
+				<a class="navbar-brand" href="/"><span>Inserir Filme</span></a>
 			</div>
 			<div class="collapse navbar-collapse" id="navbar-ex-collapse">
-				<ul class="nav navbar-nav navbar-right">
-					<li class="active"><a href="listing">Home</a></li>
-					<li><a href="#">Sair</a></li>
-				</ul>
+
 			</div>
 		</div>
 	</div>
@@ -46,19 +43,24 @@
 							<input class="form-control" name="id" required="required"
 								id="inputId" type="hidden" placeholder="" type="text"
 								value="${objectToEdit.movieId}"> <label
-								class="control-label" for="exampleInputEmail1">Título</label> <input
-								class="form-control" name="title" required="required"
+								class="control-label" for="exampleInputEmail1">Título</label> 
+								<input class="form-control" name="title" required="required"
 								id="inputTitulo" placeholder="Insira o título do filme"
 								type="text" value="${objectToEdit.title}">
-							<div class="form-group">
-								<label for="comment">Descrição:</label>
+								<label for="comment">link do filme</label>
+								<input
+								class="form-control" name="link" required="required"
+								id="linkFilme" placeholder="Insira o link Torrent"
+								type="text" value="${objectToEdit.link}">
+								<label for="comment">Descrição</label>
 								<textarea class="form-control" rows="5" id="descricao"
 									placeholder="Insira a descrição do filme" name="description">${objectToEdit.description}</textarea>
-							</div>
 						</div>
+						<label for="image">Foto</label>
 						<input type="file" class="form-control-file border" name="image">
 						<br>
 						<button type="submit" class="btn btn-default" href="save">Salvar</button>
+						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 					</form>
 				</div>
 			</div>

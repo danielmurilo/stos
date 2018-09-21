@@ -20,12 +20,16 @@ public class AppUser implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "APP_USER_ID")
 	private long id;
-	@Column(name = "LOGIN", nullable = false)
-	private String login;
+	@Column(name = "USERNAME", nullable = false)
+	private String username;
 	@Column(name = "NAME", nullable = false)
 	private String name;
 	@Column(name = "PASSWORD", nullable = false)
 	private String password;
+	@Column(name = "ROLE", nullable = false)
+	private String role;
+	
+	
 	public long getId() {
 		return id;
 	}
@@ -33,10 +37,10 @@ public class AppUser implements Serializable {
 		this.id = id;
 	}
 	public String getLogin() {
-		return login;
+		return username;
 	}
 	public void setLogin(String login) {
-		this.login = login;
+		this.username = login;
 	}
 	public String getName() {
 		return name;
@@ -53,11 +57,20 @@ public class AppUser implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	public AppUser(String login, String name, String password) {
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
+	
+	public AppUser(long id, String username, String name, String password, String role) {
 		super();
-		this.login = login;
+		this.id = id;
+		this.username = username;
 		this.name = name;
 		this.password = password;
+		this.role = role;
 	}
 
 	
